@@ -1,40 +1,58 @@
-// import { FaArrowRight } from "@fortawesome/fontawesome-svg-core";
-// import { FaArrowLeft } from "@fortawesome/fontawesome-svg-core";
-import { FaMobile } from "react-icons/fa6";          
-import { FaLaptop } from "react-icons/fa6";             
-import { FaBath } from "react-icons/fa6";              
-import { FaCamera } from "react-icons/fa6";             
-import { FaHeadphones } from "react-icons/fa6";         
-import { FaGamepad } from "react-icons/fa6";            
+"use client"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMobile, faLaptop, faCamera, faHeadphones, faGamepad, faClock } from "@fortawesome/free-solid-svg-icons";
+// import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export const Browse: React.FC = () => {
   const links = [
-    { icon: <FaMobile />, name: "phones" },
-    { icon: <FaLaptop />, name: "computers" },
-    { icon: <FaBath />, name: "smartWatch" },
-    { icon: <FaCamera />, name: "camera" },
-    { icon: <FaHeadphones />, name: "Headphones" },
-    { icon: <FaGamepad />, name: "Gaming" },
+    { icon: <FontAwesomeIcon icon={faMobile} width={15} />, name: "Phones" },
+    { icon: <FontAwesomeIcon icon={faLaptop} width={15} />, name: "Computers" },
+    { icon: <FontAwesomeIcon icon={faClock} width={15} />, name: "SmartWatch" },
+    { icon: <FontAwesomeIcon icon={faCamera} width={15} />, name: "Camera" },
+    { icon: <FontAwesomeIcon icon={faHeadphones} width={15} />, name: "HeadPhones" },
+    { icon: <FontAwesomeIcon icon={faGamepad} width={15} />, name: "Gaming" },
   ];
 
+
+  const [selected, setSelected] = useState("Camera");
+
   return (
-    <div>
-      <div>
-        <div className="mb-8 flex items-center mt-700">
-          <div className="w-3 h-8 bg-red-600 rounded-sm mr-4" />
-          <span className="text-red-600 font-semibold">Categories</span>
-        </div>
-        <h2 className="text-3xl font-bold mb-8">View By Categories</h2>
+    <div className="max-w-5xl mx-auto px-6">
+      <div className="mb-6 flex items-center">
+        <div className="w-3 h-6 bg-red-600 rounded-sm mr-3" />
+        <span className="text-red-600 font-semibold text-xs">Categories</span>
       </div>
-      <div>
-        <ul className="flex text-5xl gap-5 ">
-          {links.map(({ icon, name }) => (
-            <li key={name} className="border-2 border-gray-300 w-35 h-23 pt-3 pl-7">
-              {icon}
-              <p className="text-sm pl-3">{name}</p>
-            </li>
-          ))}
+      <h2 className="text-2xl sm:text-3xl font-bold mb-8">Browse By Category</h2>
+
+      <div className="flex items-center justify-between">
+        <ul className="flex gap-4 flex-wrap">
+          {links.map(({ icon, name }) => {
+            const isActive = selected === name;
+            return (
+              <li
+                key={name}
+                className={`cursor-pointer w-24 h-28 sm:w-28 sm:h-28 flex flex-col items-center justify-center rounded-md border ${
+                  isActive ? "bg-red-600 text-white" : "border-gray-300 text-black"
+                }`}
+                onClick={() => setSelected(name)}
+              >
+                <div className="text-3xl mb-2">{icon}</div>
+                <p className="text-xs font-medium">{name}</p>
+              </li>
+            );
+          })}
         </ul>
+
+        <div className="flex gap-2 ml-6">
+          <button
+            className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 hover:border-red-600 hover:text-red-600 transition-colors"
+            aria-label="Previous"
+          >
+       
+          </button>
+        </div>
       </div>
     </div>
   );

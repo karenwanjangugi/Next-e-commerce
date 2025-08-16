@@ -36,7 +36,7 @@ export default function Banner() {
   }, []);
 
   return (
-    <div className="w-7xl h-max bg-gradient-to-r from-black to-gray-900 text-white flex justify-between items-center p-10 rounded-lg">
+    <div className="w-7xl h-max bg-gradient-to-r from-black to-gray-900 text-white flex justify-between items-center p-10 rounded-lg mt-30">
       <div className="max-w-md">
         <p className="text-green-400 font-semibold">Categories</p>
         <h1 className="text-6xl font-medium mt-3 w-200 leading-snug">

@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import Image from "next/image";
 
-function Footer() {
+export default function Footer() {
   return (
     <div className="bg-black w-full">
       <div className="max-w-max mx-auto py-12 px-8">
@@ -157,4 +157,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+

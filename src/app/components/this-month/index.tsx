@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
 import React from "react";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import Flash from "../Flash-sales";
+
 
 interface Product {
   id: number;
@@ -24,11 +26,12 @@ const products: Product[] = [
     name: "Camera",
     image: "/Images/camera.png",
     price: 360, 
-    rating: 4 },
-  { id: 3, name: "Laptop",
+    rating: 4 
+  },
+  { id: 3,
+    name: "Laptop",
     image: "/Images/laptop.png", 
-    price: 700, 
-    rating: 5 
+    price: 700, rating: 5
   },
   {
     id: 4,
@@ -37,44 +40,12 @@ const products: Product[] = [
     price: 500,
     rating: 5,
   },
-  {
-    id: 5,
-    name: "Toy Car",
-    image: "/Images/car.png",
-    price: 960,
-    rating: 4,
-    isNew: true,
-    colors: ["#ff0000", "#000000"],
-  },
-  {
-    id: 6,
-    name: "Soccer Shoes",
-    image: "/Images/shoes.png",
-    price: 1160,
-    rating: 5,
-    colors: ["#ffff00", "#000000"],
-  },
-  {
-    id: 7,
-    name: "Game Controller",
-    image: "/Images/game.png",
-    price: 660,
-    rating: 4,
-    isNew: true,
-    colors: ["#ff0000", "#000000"],
-  },
-  {
-    id: 8,
-    name: "Jacket",
-    image: "/Images/jacket.png",
-    price: 660,
-    rating: 4,
-    colors: ["#004d40", "#ff0000"],
-  },
+
 ];
-export const Products: React.FC = () => {
+export const Product: React.FC = () => {
   return (
-    <section className=" py-12 text-center ">
+    <section className=" py-12 text-center">
+        <Flash/>
       <div className="display: flex mb-4">
         <div>
         <div className="mb-8 flex items-center">
@@ -112,7 +83,7 @@ export const Products: React.FC = () => {
               </div>
             </div>
             
-          <div className="flex items-center space-x-4">
+          <div className="space-x-4">
           <p className="text-red-500 font-bold mt-3">${product.price}</p>
             <div className="text-yellow-400">
               {"★".repeat(Math.floor(product.rating)) }
@@ -135,9 +106,6 @@ export const Products: React.FC = () => {
           </div>
         ))}
       </div>
-      <button className="mt-10 bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">
-        View All Products
-      </button>
     </section>
   );
 };

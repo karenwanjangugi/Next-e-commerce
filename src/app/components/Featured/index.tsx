@@ -14,13 +14,13 @@ export default function Featured(){
       <div className="grid grid-cols-3 gap-6 place-items-center justify-center">
         </div>
                 <div className="display: flex">
-                    <div className="featured__item">
-                        <div className="featured__item__image">
+                    <div>
+                        <div>
                         <Image className="m-3" src="/Images/Frame 684.png"  alt="services" width={650} height={30} />
                         </div>
                     </div>
-                    <div className="featured__item">
-                        <div className="featured__item__image">
+                    <div>
+                        <div>
                         <Image className="m-3" src="/Images/Frame 685.png"  alt="services" width={650} height={30} />
                         </div>
                         <div className="display: flex">
