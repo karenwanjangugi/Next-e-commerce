@@ -5,7 +5,7 @@ import { useEffect,useState } from "react";
 export default function Flash(){
     const [timeLeft, setTimeLeft] = useState({
         days: 5,
-        hours: 24,
+        hours: 23,
         minutes: 59,
         seconds: 35,
       });

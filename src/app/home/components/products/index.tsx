@@ -1,8 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
 import React from "react";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import Flash from "../Flash-sales";
+import { FiHeart } from "react-icons/fi";
+import { IoEyeOutline } from "react-icons/io5";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 
 interface Product {
@@ -14,6 +13,12 @@ interface Product {
   isNew?: boolean;
   colors?: string[];
 }
+interface Props {
+  rating: number
+}
+
+
+
 const products: Product[] = [
   {
     id: 1,
@@ -26,12 +31,11 @@ const products: Product[] = [
     name: "Camera",
     image: "/Images/camera.png",
     price: 360, 
-    rating: 4 
-  },
-  { id: 3,
-    name: "Laptop",
+    rating: 4 },
+  { id: 3, name: "Laptop",
     image: "/Images/laptop.png", 
-    price: 700, rating: 5
+    price: 700, 
+    rating: 5 
   },
   {
     id: 4,
@@ -40,12 +44,62 @@ const products: Product[] = [
     price: 500,
     rating: 5,
   },
-
+  {
+    id: 5,
+    name: "Toy Car",
+    image: "/Images/car.png",
+    price: 960,
+    rating: 4,
+    isNew: true,
+    colors: ["#ff0000", "#000000"],
+  },
+  {
+    id: 6,
+    name: "Soccer Shoes",
+    image: "/Images/shoes.png",
+    price: 1160,
+    rating: 5,
+    colors: ["#ffff00", "#000000"],
+  },
+  {
+    id: 7,
+    name: "Game Controller",
+    image: "/Images/game.png",
+    price: 660,
+    rating: 4,
+    isNew: true,
+    colors: ["#ff0000", "#000000"],
+  },
+  {
+    id: 8,
+    name: "Jacket",
+    image: "/Images/jacket.png",
+    price: 660,
+    rating: 4,
+    colors: ["#004d40", "#ff0000"],
+  },
 ];
-export const Product: React.FC = () => {
+
+const Ratings = ({ rating }: Props) => {
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
   return (
-    <section className=" py-12 text-center">
-        <Flash/>
+    <span className="flex items-center">
+      {[...Array(fullStars)].map((_, i) => (
+        <FaStar key={"f" + i} className="text-yellow-400 mr-0.5" />
+      ))}
+      {hasHalf && <FaStarHalfAlt className="text-yellow-400 mr-0.5" />}
+      {[...Array(emptyStars)].map((_, i) => (
+        <FaRegStar key={"e" + i} className="text-yellow-400 mr-0.5" />
+      ))}
+    </span>
+  );
+}
+
+export const Products: React.FC = () => {
+  return (
+    <section className=" py-12 text-center ">
       <div className="display: flex mb-4">
         <div>
         <div className="mb-8 flex items-center">
@@ -75,19 +129,18 @@ export const Product: React.FC = () => {
               />
               <div className="absolute top-2 right-2 flex flex-col gap-2 ">
                 <button className="bg-white p-2 rounded-full shadow">
-                  <FontAwesomeIcon icon={faHeart} width={15} />
+                  <FiHeart width={15} />
                 </button>
                 <button className="bg-white p-2 rounded-full shadow ">
-                  <FontAwesomeIcon icon={faEye} width={15} />
+                  <IoEyeOutline width={15} />
                 </button>
               </div>
             </div>
             
-          <div className="space-x-4">
+          <div className="flex items-center space-x-4">
           <p className="text-red-500 font-bold mt-3">${product.price}</p>
             <div className="text-yellow-400">
-              {"★".repeat(Math.floor(product.rating)) }
-              {"☆".repeat(5 - Math.floor(product.rating))}
+            <Ratings rating={product.rating} />
             </div>
           </div>
           
@@ -106,6 +159,9 @@ export const Product: React.FC = () => {
           </div>
         ))}
       </div>
+      <button className="mt-10 bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">
+        View All Products
+      </button>
     </section>
   );
 };
