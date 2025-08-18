@@ -19,7 +19,7 @@ export const Browse: React.FC = () => {
   const [selected, setSelected] = useState("Camera");
 
   return (
-    <div className="max-w-5xl mx-auto px-6">
+    <section className="w-7xl mx-auto px-6">
       <div className="mb-6 flex items-center">
         <div className="w-3 h-6 bg-red-600 rounded-sm mr-3" />
         <span className="text-red-600 font-semibold text-xs">Categories</span>
@@ -27,7 +27,7 @@ export const Browse: React.FC = () => {
       <h2 className="text-2xl sm:text-3xl font-bold mb-8">Browse By Category</h2>
 
       <div className="flex items-center justify-between">
-        <ul className="flex gap-4 flex-wrap">
+        <ul className="flex gap-7 flex-wrap w-7xl">
           {links.map(({ icon, name }) => {
             const isActive = selected === name;
             return (
@@ -54,6 +54,6 @@ export const Browse: React.FC = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -10,11 +10,11 @@ import { Hero } from "./components/Hero";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen mt-430">
+    <div className="flex flex-col items-center justify-center">
       <NavBar/>
       <Hero/>
-      <Browse/>
       <Product/>
+      <Browse/>
       <Banner/>
       <Products/>
       <Featured/>
